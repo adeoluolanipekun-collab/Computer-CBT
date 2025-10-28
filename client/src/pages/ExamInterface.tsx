@@ -228,9 +228,11 @@ export default function ExamInterface() {
     mutationFn: async () => {
       return await apiRequest("POST", `/api/exam-session/${sessionId}/start`, {});
     },
-    onSuccess: () => {
-      // Invalidate the session query to get the updated startTime
-      queryClient.invalidateQueries({ queryKey: ["/api/exam-session", sessionId] });
+    onSuccess: async () => {
+      // Invalidate and refetch the session query to get the updated startTime
+      await queryClient.invalidateQueries({ queryKey: ["/api/exam-session", sessionId] });
+      // Force an immediate refetch to ensure UI updates
+      await queryClient.refetchQueries({ queryKey: ["/api/exam-session", sessionId] });
     },
     onError: (error: Error) => {
       toast({
