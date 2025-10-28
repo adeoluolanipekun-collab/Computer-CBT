@@ -30,7 +30,8 @@ export const questions = pgTable("questions", {
   optionB: text("option_b").notNull(),
   optionC: text("option_c").notNull(),
   optionD: text("option_d").notNull(),
-  correctOption: varchar("correct_option", { length: 1 }).notNull(), // A, B, C, or D
+  optionE: text("option_e"), // Optional 5th option for questions that have it
+  correctOption: varchar("correct_option", { length: 1 }).notNull(), // A, B, C, D, or E
 });
 
 // Exam Sessions table - tracks individual exam attempts

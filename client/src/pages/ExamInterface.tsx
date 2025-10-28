@@ -20,6 +20,7 @@ interface Question {
   optionB: string;
   optionC: string;
   optionD: string;
+  optionE?: string | null;
 }
 
 interface ExamSession {
@@ -357,8 +358,12 @@ export default function ExamInterface() {
                   </h2>
 
                   <div className="space-y-4">
-                    {["A", "B", "C", "D"].map((option) => {
-                      const optionText = currentQuestion[`option${option}` as keyof Question] as string;
+                    {["A", "B", "C", "D", "E"].map((option) => {
+                      const optionText = currentQuestion[`option${option}` as keyof Question] as string | null | undefined;
+                      
+                      // Skip option E if it doesn't exist
+                      if (!optionText) return null;
+                      
                       const isSelected = selectedAnswers.get(currentQuestion.id) === option;
 
                       return (
