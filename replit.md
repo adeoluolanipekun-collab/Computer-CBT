@@ -32,7 +32,7 @@ Preferred communication style: Simple, everyday language.
 - Custom theme provider for persistent dark/light mode preferences
 - Video preloader for branding/loading experience
 - Mobile-responsive design with adaptive UI components
-- **Timer counts UP (elapsed time) instead of counting down** *[Updated: Oct 28, 2025]*
+- **Timer counts DOWN from exam duration to 00:00** (shows remaining time in descending format) *[Updated: Oct 29, 2025]*
 - **Questions fetched using session ID to receive deterministic shuffle** *[Updated: Oct 29, 2025]*
 
 ### Backend Architecture
