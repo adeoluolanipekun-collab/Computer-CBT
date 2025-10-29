@@ -54,10 +54,10 @@ export default function ExamInterface() {
   const showPreCheck = session && !session.startTime && session.status === "pending";
   const examStarted = session && (session.startTime !== null || session.status !== "pending");
 
-  // Fetch questions
+  // Fetch questions (shuffled deterministically for this session)
   const { data: questions, isLoading: questionsLoading } = useQuery<Question[]>({
-    queryKey: ["/api/questions", session?.subjectId],
-    enabled: !!session?.subjectId && examStarted,
+    queryKey: ["/api/questions/session", sessionId],
+    enabled: !!sessionId && examStarted,
   });
 
   // Fetch saved answers for session recovery

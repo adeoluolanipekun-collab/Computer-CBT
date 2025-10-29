@@ -73,17 +73,27 @@ export function registerRoutes(app: Express): Express {
     }
   });
 
-  // Get questions for a subject
-  app.get("/api/questions/:subjectId", async (req, res) => {
+  // Get questions for an exam session (shuffled deterministically based on session ID)
+  app.get("/api/questions/session/:sessionId", async (req, res) => {
     try {
-      const { subjectId } = req.params;
+      const { sessionId } = req.params;
       
-      const allQuestions = await storage.getQuestionsBySubject(subjectId);
+      // Get session to find the subject ID
+      const session = await storage.getExamSession(sessionId);
+      if (!session) {
+        return res.status(404).json({ message: "Exam session not found" });
+      }
+      
+      const allQuestions = await storage.getQuestionsBySubject(session.subjectId);
       
       // Don't send correct answers to frontend
       const questionsWithoutAnswers = allQuestions.map(({ correctOption, ...q }) => q);
       
-      res.json(questionsWithoutAnswers);
+      // Shuffle questions deterministically using session ID as seed
+      const { shuffleArray } = await import("./utils/shuffle");
+      const shuffledQuestions = shuffleArray(questionsWithoutAnswers, sessionId);
+      
+      res.json(shuffledQuestions);
     } catch (error: any) {
       console.error("Error fetching questions:", error);
       res.status(500).json({ message: "Failed to fetch questions" });
@@ -155,6 +165,9 @@ export function registerRoutes(app: Express): Express {
       const totalQuestions = session.totalQuestions;
 
       // Calculate time taken
+      if (!session.startTime) {
+        return res.status(400).json({ message: "Cannot submit exam: exam not started" });
+      }
       const startTime = new Date(session.startTime).getTime();
       const endTime = Date.now();
       const timeTaken = Math.floor((endTime - startTime) / 1000); // in seconds

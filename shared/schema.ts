@@ -130,7 +130,6 @@ export const insertExamSessionSchema = createInsertSchema(examSessions).omit({
 export const insertAnswerSchema = createInsertSchema(answers).omit({
   id: true,
   savedAt: true,
-  isCorrect: true,
 });
 
 // Type exports
