@@ -63,6 +63,9 @@ export function registerRoutes(app: Express): Express {
         duration: subject?.duration || 60,
         totalQuestions: session.totalQuestions,
         startTime: session.startTime,
+        endTime: session.endTime,
+        timeTaken: session.timeTaken,
+        status: session.status,
       });
     } catch (error: any) {
       console.error("Error fetching exam session:", error);
