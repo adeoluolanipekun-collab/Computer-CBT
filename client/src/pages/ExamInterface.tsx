@@ -3,7 +3,7 @@ import { useParams, useLocation } from "wouter";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Timer } from "@/components/Timer";
 import { QuestionPalette, QuestionPaletteDesktop } from "@/components/QuestionPalette";
 import { PreCheckModal } from "@/components/PreCheckModal";
@@ -378,8 +378,8 @@ export default function ExamInterface() {
             {/* Question area */}
             <div className="space-y-6">
               {/* Question card */}
-              <Card className="shadow-md p-6 md:p-8">
-                <div className="space-y-6">
+              <Card className="shadow-md">
+                <CardContent className="p-6 md:p-8 space-y-6">
                   <Badge variant="secondary" className="mb-2" data-testid="badge-question-number">
                     Question {currentQuestion.questionNumber} of {questions.length}
                   </Badge>
@@ -423,57 +423,57 @@ export default function ExamInterface() {
                       );
                     })}
                   </div>
-                </div>
+                </CardContent>
+
+                {/* Navigation Footer */}
+                <CardFooter className="border-t bg-muted/30 p-6 justify-between gap-3">
+                  <Button
+                    variant="outline"
+                    onClick={handlePrevious}
+                    disabled={currentQuestionIndex === 0}
+                    className="min-w-32"
+                    data-testid="button-previous"
+                  >
+                    <ChevronLeft className="mr-2 h-4 w-4" />
+                    Previous
+                  </Button>
+
+                  <div className="flex items-center gap-2">
+                    {saveMutation.isPending && (
+                      <Badge variant="secondary" className="text-xs">
+                        Saving...
+                      </Badge>
+                    )}
+                    {!isOnline && (
+                      <Badge variant="secondary" className="text-xs">
+                        Offline
+                      </Badge>
+                    )}
+                  </div>
+
+                  {currentQuestionIndex === questions.length - 1 ? (
+                    <Button
+                      variant="destructive"
+                      onClick={handleSubmit}
+                      disabled={submitMutation.isPending}
+                      className="min-w-32"
+                      data-testid="button-submit-exam"
+                    >
+                      {submitMutation.isPending ? "Submitting..." : "Submit Exam"}
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={handleNext}
+                      disabled={currentQuestionIndex === questions.length - 1}
+                      className="min-w-32"
+                      data-testid="button-next"
+                    >
+                      Next
+                      <ChevronRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  )}
+                </CardFooter>
               </Card>
-
-              {/* Navigation */}
-              <div className="flex gap-3 justify-between items-center">
-                <Button
-                  variant="outline"
-                  onClick={handlePrevious}
-                  disabled={currentQuestionIndex === 0}
-                  className="min-w-32"
-                  data-testid="button-previous"
-                >
-                  <ChevronLeft className="mr-2 h-4 w-4" />
-                  Previous
-                </Button>
-
-                <div className="flex items-center gap-2">
-                  {saveMutation.isPending && (
-                    <Badge variant="secondary" className="text-xs">
-                      Saving...
-                    </Badge>
-                  )}
-                  {!isOnline && (
-                    <Badge variant="secondary" className="text-xs">
-                      Offline
-                    </Badge>
-                  )}
-                </div>
-
-                {currentQuestionIndex === questions.length - 1 ? (
-                  <Button
-                    variant="destructive"
-                    onClick={handleSubmit}
-                    disabled={submitMutation.isPending}
-                    className="min-w-32"
-                    data-testid="button-submit-exam"
-                  >
-                    {submitMutation.isPending ? "Submitting..." : "Submit Exam"}
-                  </Button>
-                ) : (
-                  <Button
-                    onClick={handleNext}
-                    disabled={currentQuestionIndex === questions.length - 1}
-                    className="min-w-32"
-                    data-testid="button-next"
-                  >
-                    Next
-                    <ChevronRight className="ml-2 h-4 w-4" />
-                  </Button>
-                )}
-              </div>
             </div>
 
             {/* Question palette (desktop) */}
