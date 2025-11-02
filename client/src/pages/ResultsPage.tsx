@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CheckCircle2, FileText, Clock, User, Award } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import logoPath from "@assets/logo_1761650011103.png";
 
 interface ResultsData {
   studentName: string;
@@ -51,13 +52,12 @@ export default function ResultsPage() {
         {/* Hero section */}
         <div className="text-center space-y-4">
           <div className="flex justify-center">
-            <div className={`p-4 rounded-full ${isPassing ? "bg-[hsl(142,70%,45%)]/10" : "bg-muted"}`}>
-              {isPassing ? (
-                <CheckCircle2 className="h-16 w-16 text-[hsl(142,70%,45%)]" />
-              ) : (
-                <FileText className="h-16 w-16 text-muted-foreground" />
-              )}
-            </div>
+            <img 
+              src={logoPath} 
+              alt="ComputCBT" 
+              className="h-20 md:h-24 w-auto"
+              data-testid="img-logo"
+            />
           </div>
           
           <h1 className="text-3xl md:text-4xl font-bold" data-testid="text-title">
