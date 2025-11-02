@@ -140,13 +140,13 @@ export default function LandingPage() {
                     <FormLabel className="text-sm font-medium">Gender</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
-                        <SelectTrigger className="h-12 text-base" data-testid="select-gender">
+                        <SelectTrigger className="h-12 text-base hover:bg-sky-100 dark:hover:bg-sky-900/30 transition-colors" data-testid="select-gender">
                           <SelectValue placeholder="Select gender" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="Male">Male</SelectItem>
-                        <SelectItem value="Female">Female</SelectItem>
+                        <SelectItem value="Male" className="hover:bg-sky-100 dark:hover:bg-sky-900/30 cursor-pointer">Male</SelectItem>
+                        <SelectItem value="Female" className="hover:bg-sky-100 dark:hover:bg-sky-900/30 cursor-pointer">Female</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -162,13 +162,13 @@ export default function LandingPage() {
                     <FormLabel className="text-sm font-medium">Subject</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
-                        <SelectTrigger className="h-12 text-base" data-testid="select-subject">
+                        <SelectTrigger className="h-12 text-base hover:bg-sky-100 dark:hover:bg-sky-900/30 transition-colors" data-testid="select-subject">
                           <SelectValue placeholder="Choose your subject" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
                         {subjects.map((subject) => (
-                          <SelectItem key={subject} value={subject}>
+                          <SelectItem key={subject} value={subject} className="hover:bg-sky-100 dark:hover:bg-sky-900/30 cursor-pointer">
                             {subject}
                           </SelectItem>
                         ))}
