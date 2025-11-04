@@ -86,8 +86,8 @@ Preferred communication style: Simple, everyday language.
 - PDF-based question import system for bulk loading exam content
 - JSON-based batch import system for efficient question seeding
 - Idempotent seeding with validation and duplicate prevention
-- 15 predefined subjects matching WAEC/NECO curriculum with accurate durations:
-  - **Seeded subjects (15 total, 790 questions)**:
+- 16 predefined subjects matching WAEC/NECO curriculum with accurate durations:
+  - **Seeded subjects (16 total, 840 questions)**:
     - Agriculture (50 questions, 50 min) *[Existing]*
     - Biology (50 questions, 50 min) *[Existing]*
     - Chemistry (50 questions, 60 min) *[Existing]*
@@ -99,11 +99,12 @@ Preferred communication style: Simple, everyday language.
     - English Language (80 questions, 60 min, NOT shuffled) *[Added: Nov 2, 2025]*
     - Financial Accounting (60 questions with 5 options, 60 min, NOT shuffled, with passage-based questions) *[Updated: Nov 3, 2025]*
     - Government (50 questions, 60 min) *[Added: Oct 28, 2025]*
+    - History (50 questions, 50 min, shuffled) *[Added: Nov 4, 2025]*
     - Islamic Studies (50 questions, 50 min) *[Added: Oct 28, 2025]*
     - Literature in English (50 questions, 60 min, NOT shuffled, with passage-based questions) *[Added: Nov 2, 2025]*
     - Mathematics (50 questions, 90 min, NOT shuffled, with mathematical expressions preserved) *[Updated: Nov 4, 2025]*
     - Physics (50 questions, 75 min) *[Added: Oct 28, 2025]*
-  - **All subjects fully seeded!** *[Completed: Nov 2, 2025]*
+  - **All subjects fully seeded!** *[Updated: Nov 4, 2025]*
   - **Durations updated to match WAEC/NECO standards** *[Updated: Oct 28, 2025]*
 
 **Seeding Instructions**:
