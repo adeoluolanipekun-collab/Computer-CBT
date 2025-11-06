@@ -430,9 +430,11 @@ export default function ExamInterface() {
                 <InstructionRenderer instruction={currentQuestion.instruction} />
               )}
               
-              <h2 className="text-lg md:text-xl leading-relaxed" data-testid="text-question">
-                {currentQuestion.questionText}
-              </h2>
+              <h2 
+                className="text-lg md:text-xl leading-relaxed" 
+                data-testid="text-question"
+                dangerouslySetInnerHTML={{ __html: currentQuestion.questionText }}
+              />
 
               <div className="space-y-4">
                 {["A", "B", "C", "D", "E"].map((option) => {
