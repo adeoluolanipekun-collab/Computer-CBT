@@ -21,6 +21,10 @@ import math35 from "@assets/no 35_1762318183803.png";
 import math38 from "@assets/no 38_1762318183804.png";
 import math45 from "@assets/no 45_1762318183804.png";
 
+// Import Geography map and climate images
+import geographyMap from "@assets/IMAGE 1_1762510955138.jpg";
+import geographyClimate from "@assets/IMAGE 2_1762510955140.jpg";
+
 // Map image filenames to imported modules
 const imageMap: Record<string, string> = {
   "no 21_1762318183794.png": math21,
@@ -31,6 +35,8 @@ const imageMap: Record<string, string> = {
   "no 35_1762318183803.png": math35,
   "no 38_1762318183804.png": math38,
   "no 45_1762318183804.png": math45,
+  "IMAGE 1_1762510955138.jpg": geographyMap,
+  "IMAGE 2_1762510955140.jpg": geographyClimate,
 };
 
 // Helper component to render instruction with images
@@ -45,12 +51,20 @@ function InstructionRenderer({ instruction }: { instruction: string }) {
     const imageSrc = imageMap[filename];
     
     if (imageSrc) {
+      // Remove the markdown image syntax from the text
+      const textOnly = instruction.replace(markdownImageRegex, '').trim();
+      
       return (
         <div className="p-4 bg-muted/50 rounded-lg border-l-4 border-primary mb-4" data-testid="text-instruction">
+          {textOnly && (
+            <p className="text-sm md:text-base leading-relaxed whitespace-pre-wrap text-muted-foreground italic mb-4">
+              {textOnly}
+            </p>
+          )}
           <img 
             src={imageSrc} 
             alt={altText}
-            className="w-full max-w-md mx-auto h-auto rounded-md"
+            className="w-full max-w-2xl mx-auto h-auto rounded-md"
             data-testid="img-diagram"
           />
         </div>
