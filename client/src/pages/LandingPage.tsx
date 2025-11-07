@@ -45,6 +45,7 @@ const subjects = [
   "Economics",
   "English Language",
   "Financial Accounting",
+  "Geography",
   "Government",
   "History",
   "Islamic Studies",
