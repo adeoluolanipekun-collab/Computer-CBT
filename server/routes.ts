@@ -98,8 +98,8 @@ export function registerRoutes(app: Express): Express {
       
       let finalQuestions = questionsWithoutAnswers;
       
-      // Only shuffle if NOT English Language, Literature in English, Financial Accounting, or Mathematics
-      const noShuffleSubjects = ["English Language", "Literature in English", "Financial Accounting", "Mathematics"];
+      // Only shuffle if NOT English Language, Literature in English, Financial Accounting, Mathematics, or Geography
+      const noShuffleSubjects = ["English Language", "Literature in English", "Financial Accounting", "Mathematics", "Geography"];
       if (!noShuffleSubjects.includes(subject?.name || "")) {
         const { shuffleArray } = await import("./utils/shuffle");
         finalQuestions = shuffleArray(questionsWithoutAnswers, sessionId);
@@ -110,7 +110,7 @@ export function registerRoutes(app: Express): Express {
           questionNumber: index + 1
         }));
       }
-      // For English, Literature in English, Financial Accounting, and Mathematics, questions remain in their original order (no renumbering needed)
+      // For English Language, Literature in English, Financial Accounting, Mathematics, and Geography, questions remain in their original order (no renumbering needed)
       
       res.json(finalQuestions);
     } catch (error: any) {
