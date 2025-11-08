@@ -28,6 +28,10 @@ import geographyClimate from "@assets/IMAGE 2_1762510955140.jpg";
 // Import Office Practice communication diagram
 import officePracticeDiagram from "@assets/Screenshot 2025-11-07 155453_1762528141868.png";
 
+// Import Physical Education diagrams
+import physicalEdPosturalDefect from "@assets/IMAGE 1_1762601431230.png";
+import physicalEdFirstAid from "@assets/IMAGE 2_1762601431230.png";
+
 // Map image filenames to imported modules
 const imageMap: Record<string, string> = {
   "no 21_1762318183794.png": math21,
@@ -41,6 +45,8 @@ const imageMap: Record<string, string> = {
   "IMAGE 1_1762510955138.jpg": geographyMap,
   "IMAGE 2_1762510955140.jpg": geographyClimate,
   "Screenshot 2025-11-07 155453_1762528141868.png": officePracticeDiagram,
+  "IMAGE 1_1762601431230.png": physicalEdPosturalDefect,
+  "IMAGE 2_1762601431230.png": physicalEdFirstAid,
 };
 
 // Helper component to render instruction with images

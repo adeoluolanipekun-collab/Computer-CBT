@@ -52,6 +52,7 @@ const subjects = [
   "Literature in English",
   "Mathematics",
   "Office Practice",
+  "Physical Education",
   "Physics",
 ].sort();
 
