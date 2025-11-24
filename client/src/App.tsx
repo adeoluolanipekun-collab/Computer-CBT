@@ -27,6 +27,8 @@ function Router() {
       <Route path="/contact" component={ContactPage} />
       <Route path="/privacy" component={PrivacyPolicyPage} />
       <Route path="/terms" component={TermsPage} />
+      <Route path="/sitemap.xml" component={() => <pre>{sitemapContent}</pre>} />
+      <Route path="/robots.txt" component={() => <pre>{robotsContent}</pre>} />
 
       {/* Exam-related pages */}
       <Route path="/exam/:sessionId" component={ExamInterface} />
